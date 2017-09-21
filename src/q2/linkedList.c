@@ -70,11 +70,46 @@ int getLength(listElement* list) {
 	return length;
 }
 
+
+//Push a new element onto the head of a list
 void push(listElement* list, char* data, size_t size) {
 	//making new element
+	listElement* head = list;
 	listElement* newEl = createEl(data, size);
-	list = newEl;
+
+	//setting new element as the head
+	listElement temp = *newEl;
+	*newEl = *head;
+	*head = temp;
+
+	//head now needs to point to newEl which is the old head
+	head->next = newEl;
+	
 }
+//Pop an element from the head of a list.
+void pop(listElement* list) {	listElement* delete = list;	listElement* newHead = delete->next;	listElement temp = *newHead;	*newHead = *delete;	*delete = temp;}void enqueue(listElement* list, char* data, size_t size) {
+	//making new element
+	listElement* head = list;
+	listElement* newEl = createEl(data, size);
+
+	//setting new element as the head
+	listElement temp = *newEl;
+	*newEl = *head;
+	*head = temp;
+
+	//head now needs to point to newEl which is the old head
+	head->next = newEl;
+}void dequeue(listElement* list) {
+	listElement* current = list;
+	while (current != NULL) {
+		if (current->next == NULL) {
+			printf("Dequeuing %s\n", current->data);
+			free(current->data);
+			free(current);
+		}
+		current = current->next;
+	}
+}
 
 	
 	

@@ -22,5 +22,7 @@ int getLength(listElement* list);
 
 //Push a new element onto the head of a list.
 //Update the list reference using side effects.
-void push(listElement* list, char* data, size_t size);
+void push(listElement* list, char* data, size_t size);
+
+void pop(listElement* list);void enqueue(listElement* list, char* data, size_t size);void dequeue(listElement* list);
 #endif
