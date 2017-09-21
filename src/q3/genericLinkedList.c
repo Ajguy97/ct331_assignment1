@@ -36,7 +36,8 @@ listElement* createEl(void* data, size_t size) {
 void traverse(char* formatString, listElement* start) {
 	listElement* current = start;
 	while (current != NULL) {
-		printf(formatString ,"\n", current->data);
+		printf(formatString, current->data);
+		printf("\n");
 		current = current->next;
 	}
 }
