@@ -21,5 +21,10 @@ void runTests(){
   traverse(l);
   printf("\n");
 
+  //Test push
+  push(l, "4th string", 30);
+  traverse(l);
+  printf("\n");
+
   printf("\nTests complete.\n");
 }
