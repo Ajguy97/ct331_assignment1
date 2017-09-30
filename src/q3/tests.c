@@ -3,42 +3,85 @@
 #include <stdio.h>
 #include "genericLinkedList.h"
 
-void runTests(){
- printf("Tests running...\n\n");
+void printString(void* data) {
+	printf("%s\n", data);
+}
 
- listElement* head = createEl("1" , 30);
- listElement* next = insertAfter(head, "2" , 30);
- insertAfter(next, "3" , 30);
- traverse("%s", head);
+void printChar(void* data) {
+	printf("%c\n", *(char*)data);
+}
+
+void printInt(void* data) {
+	printf("%d\n", *(int*)data);
+}
+void printFloat(void* data) {
+	printf("%f\n", *(float*)data);
+}
+
+void printDouble(void* data) {
+	printf("%f\n", *(double*)data);
+}
+
+
+
+void runTests(){
+listElement* l = createEl(1, 30, printInt);
+traverse(l);
+/*
+ printf("Tests running...\n\n");
+ printf("Creating 1 2 3...\n");
+ listElement* l = createEl("(1)", 30,printString);
  printf("\n");
 
+ //Test insert after
+ listElement* l2 = insertAfter(l, "(2)", 30, printString);
+ insertAfter(l2, "(3)", 30, printString);
+ traverse(l);
+ printf("\n");
 
- /*
- printf("\nTesting getLength function\n\n");
- printf("Length of list : %d\n", getLength(head));
+ printf("Testing get Length function\n\n");
+ printf("Length of list = %d\n", getLength(l));
+ printf("\n");
 
  printf("Testing Push function\n\n");
- push(head, 4, 30);
- traverse("%d", head);
+ printf("Before : \n");
+ traverse(l);
+ printf("\n");
+ push(&l, "4", 30, printString);
+ printf("After : \n");
+ printf("\n");
+ traverse(l);
  printf("\n");
 
  printf("Testing Pop function\n\n");
- pop(head);
- traverse("%d", head);
+ printf("Before : \n");
+ traverse(l);
+ printf("\n");
+ pop(&l);
+ printf("After : \n");
+ traverse(l);
  printf("\n");
 
  printf("Testing Enqueue function\n\n");
- enqueue(head, 5, 30);
- traverse("%d", head);
+ printf("Before : \n");
+ traverse(l);
+ printf("\n");
+ enqueue(&l, "5", 30, printString);
+ printf("After : \n");
+ traverse(l);
  printf("\n");
 
  printf("Testing dequeue function\n\n");
- traverse("%d", head);
+ printf("Before : \n");
+ traverse(l);
  printf("\n");
- dequeue(head);
+ dequeue(l);
  printf("\n");
- traverse("%d", head);
+ printf("After : \n");
+ traverse(l);
  printf("\n");
- */
+
+
  printf("\nTests complete.\n\n");
+ */
 }
