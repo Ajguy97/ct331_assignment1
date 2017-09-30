@@ -3,10 +3,9 @@
 #include "linkedList.h"
 
 void runTests(){
-  printf("Tests running...\n");
+  printf("Tests running...\n\n");
+  printf("Creating 1 2 3...\n");
   listElement* l = createEl("(1)", 30);
-  //printf("%s\n%p\n", l->data, l->next);
-  //Test create and traverse
   printf("\n");
 
   //Test insert after
@@ -15,27 +14,45 @@ void runTests(){
   traverse(l);
   printf("\n");
 
+  printf("Testing get Length function\n\n");
+  printf("Length of list = %d\n", getLength(l));
+  printf("\n");
 
-  printf("Testing Push function\n");
-  push(l, "4", 30);
+  printf("Testing Push function\n\n");
+  printf("Before : \n");
+  traverse(l);
+  printf("\n");
+  push(&l, "4", 30);
+  printf("After : \n");
+  printf("\n");
   traverse(l);
   printf("\n");
 
-  printf("Testing Pop function\n");
-  pop(l);
+  printf("Testing Pop function\n\n");
+  printf("Before : \n");
+  traverse(l);
+  printf("\n");
+  pop(&l);
+  printf("After : \n");
   traverse(l);
   printf("\n");
 
-  printf("Testing Enqueue function\n");
-  enqueue(l, "5", 30);
+  printf("Testing Enqueue function\n\n");
+  printf("Before : \n");
+  traverse(l);
+  printf("\n");
+  enqueue(&l, "5", 30);
+  printf("After : \n");
   traverse(l);
   printf("\n");
 
-  printf("Testing dequeue function\n");
+  printf("Testing dequeue function\n\n");
+  printf("Before : \n");
   traverse(l);
   printf("\n");
   dequeue(l);
   printf("\n");
+  printf("After : \n");
   traverse(l);
   printf("\n");
 
@@ -58,3 +75,4 @@ void runTests(){
 
   printf("\nTests complete.\n");
 }
+

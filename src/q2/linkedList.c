@@ -72,44 +72,56 @@ int getLength(listElement* list) {
 
 
 //Push a new element onto the head of a list
-void push(listElement* list, char* data, size_t size) {
-	//making new element
-	listElement* head = list;
+void push(listElement** list, char* data, size_t size) {
 	listElement* newEl = createEl(data, size);
-
-	//setting new element as the head
-	listElement temp = *newEl;
-	*newEl = *head;
-	*head = temp;
-
-	//head now needs to point to newEl which is the old head
-	head->next = newEl;
-	
+	newEl->next = *list;
+	*list = newEl;
 }
 //Pop an element from the head of a list.
-void pop(listElement* list) {	listElement* delete = list;	listElement* newHead = delete->next;	listElement temp = *newHead;	*newHead = *delete;	*delete = temp;}void enqueue(listElement* list, char* data, size_t size) {
-	//making new element
-	listElement* head = list;
+void pop(listElement** list) {
+	listElement* head = *list;
+	listElement* newHead = head->next;
+	*list = newHead;
+}
+
+void enqueue(listElement** list, char* data, size_t size) {
 	listElement* newEl = createEl(data, size);
+	newEl->next = *list;
+	*list = newEl;
+}
 
-	//setting new element as the head
-	listElement temp = *newEl;
-	*newEl = *head;
-	*head = temp;
-
-	//head now needs to point to newEl which is the old head
-	head->next = newEl;
-}void dequeue(listElement* list) {
+void dequeue(listElement* list) {
+	int length = getLength(list);
+	//this is to loop through to find the last element and free it
 	listElement* current = list;
-	while (current != NULL) {
-		if (current->next == NULL) {
-			printf("Dequeuing %s\n", current->data);
+	//this is to loop through and find the 2nd last element and set next->NULL
+	listElement* current2 = list;
+
+	int i = 1;
+	//find the last element and free that data inside it
+	while (current != NULL && i <= length) {
+		if (current->next == NULL && i == length) {
 			free(current->data);
 			free(current);
 		}
+		i++;
 		current = current->next;
 	}
-}
+	//find 2nd last element and set next to null
+	int j = 1;
+	while (current2 != NULL && j <= length) {
+		if (j == length - 1) {
+			current2->next = NULL;
+		}
+		j++;
+		current2 = current2->next;
+	}
+}
+
+
+
+
+
 
 	
 	
