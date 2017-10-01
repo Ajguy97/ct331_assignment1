@@ -4,7 +4,7 @@
 #include "genericLinkedList.h"
 
 void printString(void* data) {
-	printf("%s\n", data);
+	printf("%s\n", (char*)data);
 }
 
 void printChar(void* data) {
@@ -25,20 +25,25 @@ void printDouble(void* data) {
 
 
 void runTests(){
-listElement* l = createEl(1, 30, printInt);
-traverse(l);
-/*
+
  printf("Tests running...\n\n");
  printf("Creating 1 2 3...\n");
- listElement* l = createEl("(1)", 30,printString);
- printf("\n");
+ /*
+ int x = 10;
+ void *pointer = &x;
 
+ listElement* l = createEl(pointer, 30,printInt);
+ 
+ printf("\n");*/
+
+ listElement* l = createEl("(1)", 30, printString);
  //Test insert after
  listElement* l2 = insertAfter(l, "(2)", 30, printString);
  insertAfter(l2, "(3)", 30, printString);
  traverse(l);
  printf("\n");
 
+ 
  printf("Testing get Length function\n\n");
  printf("Length of list = %d\n", getLength(l));
  printf("\n");
@@ -83,5 +88,5 @@ traverse(l);
 
 
  printf("\nTests complete.\n\n");
- */
+ 
 }

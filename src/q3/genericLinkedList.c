@@ -26,6 +26,8 @@ listElement* createEl(void* data, size_t size,printFunction print) {
 		return NULL; //return NULL to indicate an error.
 	}
 	strcpy(dataPointer, data);
+
+
 	e->data = dataPointer;
 	
 	e->size = size;
@@ -84,7 +86,7 @@ void push(listElement** list, void* data, size_t size,printFunction print) {
 //Pop an element from the head of a list.
 listElement* pop(listElement** list) {
 	listElement* head = *list;
-	listElement* poppedElement = createEl(head->data, head->size);
+	listElement* poppedElement = createEl(head->data, head->size,head->print);
 	listElement* newHead = head->next;
 	*list = newHead;
 
