@@ -32,9 +32,12 @@ void runTests(){
   printf("Before : \n");
   traverse(l);
   printf("\n");
-  pop(&l);
+  listElement* poppedEl = pop(&l);
   printf("After : \n");
   traverse(l);
+  printf("\n");
+  printf("Popped element : ");
+  traverse(poppedEl);
   printf("\n");
 
   printf("Testing Enqueue function\n\n");
@@ -45,16 +48,18 @@ void runTests(){
   printf("After : \n");
   traverse(l);
   printf("\n");
-
+  
   printf("Testing dequeue function\n\n");
   printf("Before : \n");
   traverse(l);
   printf("\n");
-  dequeue(l);
+  listElement* deq = dequeue(l);
   printf("\n");
   printf("After : \n");
   traverse(l);
   printf("\n");
+  printf("Deqeued element : ");
+  traverse(deq);
 
 
 

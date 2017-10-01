@@ -82,10 +82,15 @@ void push(listElement** list, void* data, size_t size,printFunction print) {
 	*list = newEl;
 }
 //Pop an element from the head of a list.
-void pop(listElement** list) {
+listElement* pop(listElement** list) {
 	listElement* head = *list;
+	listElement* poppedElement = createEl(head->data, head->size);
 	listElement* newHead = head->next;
 	*list = newHead;
+
+	free(head->data);
+	free(head);
+	return poppedElement;
 }
 
 void enqueue(listElement** list, void* data, size_t size,printFunction print) {
@@ -94,17 +99,19 @@ void enqueue(listElement** list, void* data, size_t size,printFunction print) {
 	*list = newEl;
 }
 
-void dequeue(listElement* list) {
+listElement* dequeue(listElement* list) {
 	int length = getLength(list);
 	//this is to loop through to find the last element and free it
 	listElement* current = list;
 	//this is to loop through and find the 2nd last element and set next->NULL
 	listElement* current2 = list;
-
+	//store dequeued element
+	listElement* deq;
 	int i = 1;
 	//find the last element and free that data inside it
 	while (current != NULL && i <= length) {
 		if (current->next == NULL && i == length) {
+			deq = createEl(current->data, current->size,current->print);
 			free(current->data);
 			free(current);
 		}
@@ -120,9 +127,8 @@ void dequeue(listElement* list) {
 		j++;
 		current2 = current2->next;
 	}
+	return deq;
 }
-
-
 
 
 

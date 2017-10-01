@@ -24,10 +24,10 @@ int getLength(listElement* list);
 //Update the list reference using side effects.
 void push(listElement** list, char* data, size_t size);
 
-void pop(listElement** list);
+listElement* pop(listElement** list);
 
 void enqueue(listElement** list, char* data, size_t size);
 
-void dequeue(listElement* list);
+listElement* dequeue(listElement* list);
 
 #endif
