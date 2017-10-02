@@ -10,10 +10,10 @@ int main(int arg, char* argc[]){
   char** charDoublePointer;
 
   printf("Size of int = %d \n", sizeof(Int));
-  printf("Size of int = %d \n", sizeof(intPointer));
-  printf("Size of int = %ld \n", sizeof(Long));
-  printf("Size of int = %d \n", sizeof(doublePointer));
-  printf("Size of int = %d \n", sizeof(charDoublePointer));
+  printf("Size of int pointer = %d \n", sizeof(intPointer));
+  printf("Size of long = %ld \n", sizeof(Long));
+  printf("Size of double pointer = %d \n", sizeof(doublePointer));
+  printf("Size of char double pointer = %d \n", sizeof(charDoublePointer));
 
 
 

@@ -60,6 +60,8 @@ void deleteAfter(listElement* after){
   free(delete);
 }
 
+///////////////////////////////////////////////////////////////////////////////////
+
 int getLength(listElement* list) {
 	int length = 0;
 	listElement* current = list;
@@ -110,7 +112,7 @@ listElement* dequeue(listElement* list) {
 		}
 		current = current->next;
 	}
-	return current;
+	return deq;
 }
 
 
