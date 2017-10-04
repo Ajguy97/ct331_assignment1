@@ -18,15 +18,14 @@ listElement* createEl(void* data, size_t size,printFunction print) {
 		//malloc has had an error
 		return NULL; //return NULL to indicate an error.
 	}
-	////void* dataPointer = malloc(size)
-	void* dataPointer = malloc(sizeof(void)*size);
+	
+	void* dataPointer = malloc(size);
 	if (dataPointer == NULL) {
 		//malloc has had an error
 		free(e); //release the previously allocated memory
 		return NULL; //return NULL to indicate an error.
 	}
-	//memmove(dataPointer,data,size);
-	strcpy(dataPointer, data);
+	memmove(dataPointer, data,size);
 
 
 	e->data = dataPointer;

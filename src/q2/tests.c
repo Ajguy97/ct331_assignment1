@@ -61,23 +61,6 @@ void runTests(){
   printf("Deqeued element : ");
   traverse(deq);
 
-
-
-  /*
-  // Test delete after
-  deleteAfter(l);
-  traverse(l);
-  printf("\n");
-
-  //Test push
-  push(l, "4th string", 30);
-  push(l, "5th string", 30);
-  
-  traverse(l);
-  printf("\n");
-
-  */
-
   printf("\nTests complete.\n");
 }
 
