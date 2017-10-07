@@ -3,6 +3,7 @@
 #include "linkedList.h"
 
 void runTests(){
+	printf("-------------------------------------------------------------------------------------------------\n");
   printf("Tests running...\n\n");
   printf("Creating 1 2 3...\n");
   listElement* l = createEl("(1)", 30);
@@ -13,22 +14,22 @@ void runTests(){
   insertAfter(l2, "(3)", 30);
   traverse(l);
   printf("\n");
-
+  printf("-------------------------------------------------------------------------------------------------\n");
   printf("Testing get Length function\n\n");
   printf("Length of list = %d\n", getLength(l));
   printf("\n");
-
-  printf("Testing Push function\n\n");
+  printf("-------------------------------------------------------------------------------------------------\n");
+  printf("Testing Push function (Pushing elements to head of the list)\n\n");
   printf("Before : \n");
   traverse(l);
   printf("\n");
-  push(&l, "4", 30);
+  push(&l, "(4)", 30);
   printf("After : \n");
   printf("\n");
   traverse(l);
   printf("\n");
-
-  printf("Testing Pop function\n\n");
+  printf("-------------------------------------------------------------------------------------------------\n");
+  printf("Testing Pop function (Popping element from the head of the list)\n\n");
   printf("Before : \n");
   traverse(l);
   printf("\n");
@@ -39,17 +40,17 @@ void runTests(){
   printf("Popped element : ");
   traverse(poppedEl);
   printf("\n");
-
-  printf("Testing Enqueue function\n\n");
+  printf("-------------------------------------------------------------------------------------------------\n");
+  printf("Testing Enqueue function (Enqueue element to the head of the list)\n\n");
   printf("Before : \n");
   traverse(l);
   printf("\n");
-  enqueue(&l, "5", 30);
+  enqueue(&l, "(5)", 30);
   printf("After : \n");
   traverse(l);
   printf("\n");
-  
-  printf("Testing dequeue function\n\n");
+  printf("-------------------------------------------------------------------------------------------------\n");
+  printf("Testing dequeue function (Dequeue element from the tail of the list)\n\n");
   printf("Before : \n");
   traverse(l);
   printf("\n");
@@ -60,7 +61,7 @@ void runTests(){
   printf("\n");
   printf("Deqeued element : ");
   traverse(deq);
-
+  printf("-------------------------------------------------------------------------------------------------\n");
   printf("\nTests complete.\n");
 }
 

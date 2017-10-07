@@ -22,15 +22,7 @@ void printDouble(void* data) {
 	printf("%f\n", *(double*)data);
 }
 
-
-
-void runTests(){
-
- printf("Tests running...\n\n");
- printf("Creating Generic Linked List...\n\n");
- 
- 
- char stringTest[] = "A-Apple";
+char stringTest[] = "A-Apple";
  void *String = &stringTest;
 
  char charTest = 'B';
@@ -45,8 +37,10 @@ void runTests(){
  double doubleTest = 555555.555555;
  void *Double = &doubleTest;
 
-
-
+void runTests(){
+printf("-------------------------------------------------------------------------------------------------\n");
+ printf("Tests running...\n\n");
+ printf("Creating Generic Linked List...\n\n");
  listElement* l = createEl(String, sizeof(stringTest), printString);
  listElement* l2 = insertAfter(l, Char, sizeof(charTest), printChar);
  listElement* l3 = insertAfter(l2, Int, sizeof(intTest), printInt);
@@ -55,12 +49,12 @@ void runTests(){
  traverse(l);
  printf("\n");
 
- 
+ printf("-------------------------------------------------------------------------------------------------\n");
  printf("Testing get Length function\n\n");
  printf("Length of list = %d\n", getLength(l));
  printf("\n");
- 
- printf("Testing Push function\n\n");
+ printf("-------------------------------------------------------------------------------------------------\n");
+ printf("Testing Push function (Pushing elements to head of the list)\n\n");
  printf("Before : \n\n");
  traverse(l);
  printf("\n");
@@ -70,21 +64,22 @@ void runTests(){
  push(&l, Float, sizeof(floatTest), printFloat);
  push(&l, Double, sizeof(doubleTest), printDouble);
  printf("After : \n\n");
- printf("\n");
  traverse(l);
  printf("\n");
-
- printf("Testing Pop function\n\n");
+ printf("-------------------------------------------------------------------------------------------------\n");
+ printf("Testing Pop function (Popping element from the head of the list)\n\n");
  printf("Before : \n\n");
  traverse(l);
  printf("\n");
- pop(&l);
+ listElement* popped = pop(&l);
  printf("After : \n\n");
  traverse(l);
+ printf("\nPopped Element(s) : ");
+ traverse(popped);
  printf("\n");
-
- printf("Testing Enqueue function\n\n");
- printf("Before : \n");
+ printf("-------------------------------------------------------------------------------------------------\n");
+ printf("Testing Enqueue function (Enqueue element to the head of the list)\n\n");
+ printf("Before : \n\n");
  traverse(l);
  printf("\n");
  enqueue(&l, String, sizeof(stringTest), printString);
@@ -92,22 +87,22 @@ void runTests(){
  enqueue(&l, Int, sizeof(intTest), printInt);
  enqueue(&l, Float, sizeof(floatTest), printFloat);
  enqueue(&l, Double, sizeof(doubleTest), printDouble);
- printf("After : \n");
+ printf("After : \n\n");
  traverse(l);
  printf("\n");
-
- printf("Testing dequeue function\n\n");
- printf("Before : \n");
+ printf("-------------------------------------------------------------------------------------------------\n");
+ printf("Testing dequeue function (Dequeue element from the tail of the list)\n\n");
+ printf("Before : \n\n");
  traverse(l);
  printf("\n");
- for (int i = 0; i < 5; i++) {
-	 dequeue(l);
- }
+ listElement* deq = dequeue(l);
  printf("\n");
- printf("After : \n");
+ printf("After : \n\n");
  traverse(l);
+ printf("\nDequeued Element(s) : ");
+ traverse(deq);
  printf("\n");
-
+ printf("-------------------------------------------------------------------------------------------------\n");
  
  printf("\nTests complete.\n\n");
  

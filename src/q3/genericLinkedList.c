@@ -26,8 +26,6 @@ listElement* createEl(void* data, size_t size,printFunction print) {
 		return NULL; //return NULL to indicate an error.
 	}
 	memmove(dataPointer, data,size);
-
-
 	e->data = dataPointer;
 	e->size = size;
 	e->print = print;
@@ -101,32 +99,18 @@ void enqueue(listElement** list, void* data, size_t size,printFunction print) {
 }
 
 listElement* dequeue(listElement* list) {
-	int length = getLength(list);
-	//this is to loop through to find the last element and free it
 	listElement* current = list;
-	//this is to loop through and find the 2nd last element and set next->NULL
-	listElement* current2 = list;
 	//store dequeued element
 	listElement* deq;
-	int i = 1;
 	//find the last element and free that data inside it
-	while (current != NULL && i <= length) {
-		if (current->next == NULL && i == length) {
-			deq = createEl(current->data, current->size,current->print);
-			free(current->data);
-			free(current);
+	while (current != NULL) {
+		if (current->next->next == NULL) {
+			deq = createEl(current->next->data, current->next->size,current->next->print);
+			free(current->next->data);
+			free(current->next);
+			current->next = NULL;
 		}
-		i++;
 		current = current->next;
-	}
-	//find 2nd last element and set next to null
-	int j = 1;
-	while (current2 != NULL && j <= length) {
-		if (j == length - 1) {
-			current2->next = NULL;
-		}
-		j++;
-		current2 = current2->next;
 	}
 	return deq;
 }
