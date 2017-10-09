@@ -55,6 +55,7 @@ printf("------------------------------------------------------------------------
  printf("\n");
  printf("-------------------------------------------------------------------------------------------------\n");
  printf("Testing Push function (Pushing elements to head of the list)\n\n");
+ printf("Pushing elements in order :  %s , %c , %d , %f , %f \n\n", stringTest, charTest, intTest, floatTest, doubleTest);
  printf("Before : \n\n");
  traverse(l);
  printf("\n");
@@ -79,6 +80,7 @@ printf("------------------------------------------------------------------------
  printf("\n");
  printf("-------------------------------------------------------------------------------------------------\n");
  printf("Testing Enqueue function (Enqueue element to the head of the list)\n\n");
+ printf("Pushing elements in order :  %s , %c , %d , %f , %f \n\n", stringTest, charTest, intTest, floatTest, doubleTest);
  printf("Before : \n\n");
  traverse(l);
  printf("\n");
