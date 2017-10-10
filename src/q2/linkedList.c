@@ -63,6 +63,7 @@ void deleteAfter(listElement* after){
 ///////////////////////////////////////////////////////////////////////////////////
 
 int getLength(listElement* list) {
+	//counter to increment everytime current->next is called
 	int length = 0;
 	listElement* current = list;
 	while (current != NULL) {
@@ -75,22 +76,28 @@ int getLength(listElement* list) {
 
 //Push a new element onto the head of a list
 void push(listElement** list, char* data, size_t size) {
+	//create the element that is passed in
 	listElement* newEl = createEl(data, size);
+	//setting new element's next pointer as the head pointer that was passed in
 	newEl->next = *list;
+	//now we set new element as the head of the list
 	*list = newEl;
 }
 //Pop an element from the head of a list.
 listElement* pop(listElement** list) {
+	//creating node to store head of the list
 	listElement* head = *list;
+	//creating node to store popped element which is the head of the list
 	listElement* poppedElement = createEl(head->data, head->size);
+	//setting a newhead element as the node next to head.
 	listElement* newHead = head->next;
 	*list = newHead;
-
+	//freeing the data inside head which is now not pointing to anything.
 	free(head->data);
 	free(head);
 	return poppedElement;
 }
-
+//same as push
 void enqueue(listElement** list, char* data, size_t size) {
 	listElement* newEl = createEl(data, size);
 	newEl->next = *list;
@@ -98,16 +105,19 @@ void enqueue(listElement** list, char* data, size_t size) {
 }
 
 listElement* dequeue(listElement* list) {
-	//this is to loop through to find the last element and free it
+	//store head of list in current
 	listElement* current = list;
 	//store dequeued element
 	listElement* deq;
 	//find the last element and free that data inside it
 	while (current != NULL) {
+		//if last element == null - at the tail
 		if (current->next->next == NULL) {
+			//set deq as the last element
 			deq = createEl(current->next->data, current->next->size);
 			free(current->next->data);
 			free(current->next);
+			//set 2nd last element pointing to NULL
 			current->next = NULL;
 		}
 		current = current->next;
